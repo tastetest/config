@@ -1,25 +1,18 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: JetBrains Mono Nerd Font, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 1px;
+    font-family: fira-code, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
 }
 
-window {
-    background: transparent;
-}
-window box > box {
-    padding-top: 5em;
-    margin: 2px;
-}
 window#waybar {
+    /* #0e1214 */
     background-color: #0e1214;
-    border: 3px solid #0e1214;
-    border-radius: 30px;
+    /* rgba(43, 48, 59, 0.5);*/
+    border-bottom: 3px solid rgba(14, 18, 20, 0.5);
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
 }
-
 
 window#waybar.hidden {
     opacity: 0.2;
@@ -58,26 +51,22 @@ button:hover {
 }
 
 #workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
+    padding: 5 15px;
     color: #ffffff;
+
 }
 
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.2);
 }
 
-#workspaces button.focused {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
+#workspaces button.active {
+    color: #26a65B;
+    /*box-shadow: inset 0 -3px #ffffff; */
 }
 
 #workspaces button.urgent {
-    color: #eb4d4b;
-}
-#workspaces button.active {
-    color: #64727d;
-    transition-timing-function: ease-in-out;
+    background-color: #eb4d4b;
 }
 
 #mode {
@@ -105,17 +94,30 @@ button:hover {
     color: #ffffff;
 }
 
-#window {
-      background-color: transparent; 
-      transition-timing-function: ease;
-      transition: 0.5s;
-}
-
+#window,
 #workspaces {
-    background-color: transparent;
-    margin: 0 4px;
+     margin: 0 4px;
 }
 
+.modules-left {
+    background-color: #1b2125;
+    border-right: 3px solid #1b2125;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.modules-right {
+    background-color: #1b2125;
+    border-left: 3px solid #1b2125;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.modules-center {
+   background-color: #1b2125;
+   border: 3px solid #1b2125;
+   border-radius: 15px;
+}
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
     margin-left: 0;
@@ -126,38 +128,18 @@ button:hover {
     margin-right: 0;
 }
 
-.modules-left {
-    background-color: #15181a;
-    border: 3px solid #15181a;
-    border-radius: 30px;
-}
-
-.modules-right {
-    background-color: #15181a;
-    border: 3px solid #15181a;
-    border-radius: 30px;
-}
-
-.modules-center {
-    background-color: #15181a;
-    border: 3px solid #15181a;
-    border-radius: 30px;
-    padding: 1.5em;
-    padding-bottom: 1em;
-}
-
 #clock {
-    background-color: transparent;
+/*     border-bottom: 3px solid #26a65b; */
 }
 
 #battery {
-    background-color: transparent;
-    font-size: 25px;
+   /*  border-bottom: 3px solid #ffffff; */
+    color: #ffffff;
 }
 
 #battery.charging, #battery.plugged {
     color: #26a65B;
-/*   background-color: #26A65B; */
+    border-bottom: 3px solid #26A65B;
 }
 
 @keyframes blink {
@@ -168,8 +150,8 @@ button:hover {
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
+    border-bottom: #f53c3c;
+    color: #f53c3c;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -182,34 +164,38 @@ label:focus {
 }
 
 #cpu {
-    background-color: transparent;
-    color: #FFF;
+    border-bottom: #2ecc71;
+    color: #fff;
 }
 
 #memory {
-    background-color: transparent;
+    border-bottom: #9b59b6;
 }
 
 #disk {
-    background-color: #964B00;
+    border-bottom: #964B00;
 }
 
 #backlight {
-/*    border-bottom: 3px solid #90b1b1 */
+    background-color: #90b1b1;
 }
 
 #network {
-    font-size: 25px;
+    border-bottom: #2980b9;
 }
 
 #network.disconnected {
-    background-color: #f53c3c;
+    color: #f53c3c;
 }
 
 #pulseaudio {
-    background-color: transparent;
+    border-bottom: #f1c40f;
 }
 
+#pulseaudio.muted {
+    border-bottom: #90b1b1;
+    color: #fff0f5;
+}
 
 #wireplumber {
     background-color: #fff0f5;
@@ -230,25 +216,26 @@ label:focus {
     background-color: #66cc99;
 }
 
-.custom-arch {
-    background-color: #15181a;
-}
-.custom-spotify {
-    padding: 0 10px;
-    margin: 0 4px;
-    color: white;
-}
-
 #custom-media.custom-vlc {
     background-color: #ffa000;
 }
 
+#custom-power {
+    padding: 3px;
+    padding-right: 5px;
+}
+
+#custom-powerlineRight {
+    padding: 0px;
+    padding-right: 3px;
+}
+
 #temperature {
-    background-color: transparent;
+    border-bottom: #f0932b;
 }
 
 #temperature.critical {
-    background-color: #eb4d4b;
+    color: #eb4d4b;
 }
 
 #tray {
